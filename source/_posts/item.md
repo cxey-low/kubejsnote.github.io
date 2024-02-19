@@ -4,21 +4,20 @@ date: 2024-02-18 23:03:28
 tags:
 ---
 
-显示掉落物的数量，名称，消失时间  
+显示掉落物的数量，名称，消失时间
 
-```javascript  
-
+```javascript
 ServerEvents.tick((event) => {
 	const { server } = event;
 
-    // 获取所有掉落物
+	// 获取所有掉落物
 	server.entities.filterSelector("@e[type=item]").forEach((entity) => {
 		const { age, item } = entity;
 		const { count, displayName } = item;
 
 		let rest_time = `${Math.trunc((6000 - age) / 20)}`;
 
-        // 获取时间的颜色
+		// 获取时间的颜色
 		let compare = (time) => (rest_time - time > 0 ? true : false);
 		let color = () => {
 			switch (true) {
@@ -33,7 +32,7 @@ ServerEvents.tick((event) => {
 			}
 		};
 
-        // 添加自定义名称
+		// 添加自定义名称
 		entity.customNameVisible = true;
 		entity.customName = Text.of(count + "x ")
 			.append(displayName)
@@ -41,6 +40,4 @@ ServerEvents.tick((event) => {
 			.append(color());
 	});
 });
-
-```  
-
+```
