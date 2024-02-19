@@ -4,7 +4,7 @@ date: 2024-02-18 23:03:28
 tags:
 ---
 
-显示掉落物的数量，名称，消失时间
+显示掉落物的数量，名称，消失时间:
 
 ```javascript
 ServerEvents.tick((event) => {
